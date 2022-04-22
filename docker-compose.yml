@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+    app:
+
+services:
+    app:
+        build:
+            context: ./docker/app
+            dockerfile: Dockerfile
+        container_name: app
+        volumes:
+            - ./src:/var/www/html
+        networks:
+            - app
