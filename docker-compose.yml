@@ -9,7 +9,28 @@ services:
             context: ./docker/app
             dockerfile: Dockerfile
         container_name: app
+        depends_on:
+            - db
         volumes:
             - ./src:/var/www/html
+        networks:
+            - app
+
+    db:
+        image: mysql:5.7
+        container_name: db
+        platform: linux/amd64
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: cq_demo
+            MYSQL_USER: cq_demo
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: secret
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./docker/db:/var/lib/mysql
         networks:
             - app

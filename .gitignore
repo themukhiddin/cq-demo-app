@@ -4,6 +4,7 @@
 .idea
 .phpunit.result.cache
 .vscode
+/docker/db
 /src/node_modules
 /src/public/hot
 /src/public/storage
