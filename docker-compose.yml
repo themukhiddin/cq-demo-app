@@ -9,7 +9,6 @@ services:
             context: ./docker/app
             dockerfile: Dockerfile
         container_name: app
-        command: ./prepare.sh
         depends_on:
             - db
         volumes:
