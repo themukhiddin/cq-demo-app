@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+
+Route::get('/{locale}/calendar/{year}', [CalendarController::class, 'getFullYear']);
+
+Route::get('/{locale}/api/what-day-is/{day}-{month}-{year}', [CalendarController::class, 'getDayName']);
